@@ -13,6 +13,10 @@ func InitMysql() {
 	fmt.Println("InitMysql...")
 	if db == nil {
 		db, _ = sql.Open("mysql", "root:12345678@tcp(127.0.0.1:3306)/blogweb_gin?charset=utf8")
+		err := db.Ping()
+		if err != nil {
+			log.Fatalf("ping database failed: %v", err)
+		}
 		CreateTableWithUser()
 		CreateTableWithArticle()
 		CreateTableWithAlbum()
