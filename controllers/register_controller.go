@@ -38,6 +38,7 @@ func RegisterPost(c *gin.Context) {
 	_, err := models.InsertUser(user)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"code": 0, "message": "注册失败"})
+		fmt.Println("InsertUser() error: ", err) // 添加打印日志或者其他调试信息
 	} else {
 		c.JSON(http.StatusOK, gin.H{"code": 1, "message": "注册成功"})
 	}
