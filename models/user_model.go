@@ -38,6 +38,7 @@ func QueryWithUsername(username string) int {
 }
 
 // QueryUserWithParam 根据用户名和密码，查询id
+// 主要用于登录的时候从数据库中查询用户名和密码的id，然后利用 id 是否大于 0 来判断用户是否注册
 func QueryUserWithParam(username, password string) int {
 	sql := fmt.Sprintf("where username='%s' and password='%s'", username, password)
 	return QueryUserWightCon(sql)
